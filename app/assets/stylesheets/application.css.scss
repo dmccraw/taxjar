@@ -15,3 +15,27 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.navbar-brand {
+  .logo {
+    color: #5bb75b;
+  }
+}
+
+.tax-rate-errors {
+  opacity: 0;
+  // font-size: 21px;
+  // margin-top: 25px;
+  text-align: center;
+
+  -webkit-transition: opacity .5s ease-in;
+     -moz-transition: opacity .5s ease-in;
+      -ms-transition: opacity .5s ease-in;
+       -o-transition: opacity .5s ease-in;
+          transition: opacity .5s ease-in;
+
+}
+
+.tax-rate-errors.load {
+  opacity: 1;
+}

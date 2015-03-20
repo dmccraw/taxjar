@@ -4,6 +4,7 @@ unless Rails.env.production?
   RestClient.log =
     Object.new.tap do |proxy|
       def proxy.<<(message)
+        ap message
         Rails.logger.info message
       end
     end

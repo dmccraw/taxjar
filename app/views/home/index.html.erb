@@ -1,24 +1,62 @@
 <div class="container">
-  <h1>Tax Jar</h1>
-  <form>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+  <div class="row">
+    <h1>Lookup Taxes by Zip Code</h1>
+    <%= form_tag home_lookup_path do %>
+      <div class="form-group">
+
+        <%= text_field_tag :zip_code, @location ? @location.zip : (params[:zip_code].present? ? params[:zip_code] : nil), placeholder: "Zip Code", autofocus: true %>
+        <%= submit_tag "Lookup Zip", class: "btn btn-default" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+  <% if @error %>
+    <div class="panel panel-danger tax-rate-errors">
+      <div class="panel-body">
+        <h3 class="panel-title"><%= @error %></h3>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  <% end %>
+  <% if @location %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Tax Info</h3>
+      </div>
+        <ul class="list-group">
+          <li class="list-group-item" >
+            <span class="tax-rate-title">Zip</span><%= @location.zip %>
+          </li>
+          <li class="list-group-item" >
+            <span class="tax-rate-title">City</span><%= @location.city %>
+          </li>
+          <li class="list-group-item" >
+            <span class="tax-rate-title">County</span><%= @location.county %>
+          </li>
+          <li class="list-group-item" >
+            <span class="tax-rate-title">State</span><%= @location.state %>
+          </li>
+          <li class="list-group-item" >
+            <span class="tax-rate-title">City Rate</span><%= @location.city_rate %>%
+          </li>
+          <li class="list-group-item" >
+            <span class="tax-rate-title">County Rate</span><%= @location.county_rate %>%
+          </li>
+          <li class="list-group-item" >
+            <span class="tax-rate-title">State Rate</span><%= @location.state_rate %>%
+          </li>
+          <li class="list-group-item" >
+            <span class="tax-rate-title">Combined District Rate</span><%= @location.combined_district_rate %>%
+          </li>
+          <li class="list-group-item total">
+            <span class="tax-rate-title">
+              Combined Rate
+            </span>
+            <%= @location.combined_rate %>%
+          </li>
+
+        </ul>
     </div>
-    <div class="form-group">
-      <label for="exampleInputFile">File input</label>
-      <input type="file" id="exampleInputFile">
-      <p class="help-block">Example block-level help text here.</p>
-    </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox"> Check me out
-      </label>
-    </div>
-    <button type="submit" class="btn btn-default">Submit</button>
-  </form>
+  <% end %>
+  </div>
 </div>
+
