@@ -15,7 +15,7 @@ class TaxJarApi
       case response.code
       when 200
         location = JSON.parse(response.body, symbolize_keys: true)
-        ap location
+        # ap location
         return location["location"], nil
       when 400
         # Not authorized. Access token is missing or invalid.
