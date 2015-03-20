@@ -5,6 +5,7 @@
       <div class="form-group">
 
         <%= text_field_tag :zip_code, @location ? @location.zip : (params[:zip_code].present? ? params[:zip_code] : nil), placeholder: "Zip Code", autofocus: true %>
+        <%= select_tag :country, "<option value='US'>United States</option><option value='CA' #{params[:country] == "CA" ? 'selected' : ''}>Canada</option>".html_safe %>
         <%= submit_tag "Lookup Zip", class: "btn btn-default" %>
       </div>
     <% end %>
