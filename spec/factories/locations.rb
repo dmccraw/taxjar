@@ -19,14 +19,14 @@
 FactoryGirl.define do
   factory :location do
     state "MyString"
-zip "MyString"
-state_rate ""
-city "MyString"
-city_rate "9.99"
-county ""
-county_rate ""
-combined_district_rate ""
-combined_rate "9.99"
+    zip "MyString"
+    state_rate ""
+    city "MyString"
+    city_rate "9.99"
+    county ""
+    county_rate ""
+    combined_district_rate ""
+    combined_rate "9.99"
   end
 
 end
